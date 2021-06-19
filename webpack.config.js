@@ -2,6 +2,7 @@
 import path from 'path';
 import { dirname } from 'dirname-filename-esm';
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
 const __dirname = dirname(import.meta);
 
 const config = { 
@@ -14,8 +15,13 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "client/src", "index.html")
-    })
-  ]
+    }),
+    new CleanWebpackPlugin()
+  ],
+  devServer: {
+    contentBase: './client/reactapp',
+    open: true
+  },
 };
 
 export default config;
