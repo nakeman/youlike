@@ -12,6 +12,15 @@ const config = {
     filename: 'main.js',	// 最终打包好的文件
     path: path.resolve(__dirname, 'client/reactapp'), // 发布目录
   },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "client/src", "index.html")
