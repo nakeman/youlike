@@ -12,8 +12,8 @@
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
-import bodyParser from 'body-parser';
-import session from 'express-session';
+// import bodyParser from 'body-parser';
+// import session from 'express-session';
 import logger from 'morgan';
 //
 
@@ -24,10 +24,11 @@ import './database.js'; // 何时何处创建：异步链接，似乎程序初�
 //import usersRouter from './users/router.js';
 
 
-import { dirname, filename } from 'dirname-filename-esm';
+// import { dirname, filename } from 'dirname-filename-esm';
+import { dirname} from 'dirname-filename-esm';
 
 const __dirname = dirname(import.meta);
-const __filename = filename(import.meta);
+// const __filename = filename(import.meta);
 
 const app = express();
 
@@ -54,7 +55,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
